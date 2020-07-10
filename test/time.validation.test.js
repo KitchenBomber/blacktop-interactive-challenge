@@ -3,6 +3,7 @@ const {
     closestDate,
     formatTimestamp,
 } = require('../modules/time.validation');
+const moment = require('moment-timezone');
 
 describe('time validation', () => {
     describe('close to now', () => {
@@ -10,6 +11,30 @@ describe('time validation', () => {
             const date = new Date();
             const timestamp = date.toISOString();
             expect(closeToNow(timestamp)).toBe(true);
+            done();
+        });
+        test('it returns true if passed the time 29 seconds ago', (done) =>{
+            const date = new moment();
+            const timestamp = date.subtract({ seconds: 29 }).toISOString();
+            expect(closeToNow(timestamp)).toBe(true);
+            done();
+        });
+        test('it returns false if passed the time 31 seconds ago', (done) => {
+            const date = new moment();
+            const timestamp = date.subtract({ seconds: 31 }).toISOString();
+            expect(closeToNow(timestamp)).toBe(false);
+            done();
+        });
+        test('it returns true if passed the time 29 seconds from now', (done) => {
+            const date = new moment();
+            const timestamp = date.add({ seconds: 29 }).toISOString();
+            expect(closeToNow(timestamp)).toBe(true);
+            done();
+        });
+        test('it returns false if passed the time 31 seconds from now', (done) => {
+            const date = new moment();
+            const timestamp = date.add({ seconds: 31 }).toISOString();
+            expect(closeToNow(timestamp)).toBe(false);
             done();
         });
         // YOUR CODE HERE
@@ -21,6 +46,7 @@ describe('time validation', () => {
             expect(closestDate(inputTime)).toBe(expectedOutput);
             done();
         });
+        
         // YOUR CODE HERE
     });
     describe('format timestamp', () => {
