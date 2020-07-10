@@ -23,4 +23,8 @@ npm run test
 ## Questions
 
 - Did you make any changes to the functions after thinking through test cases?
+Yes, I had to rewrite a big part of the second one.
+I was trying to compare the current time and the start of day but I was accidentally re-writing my variable so it was only ever returning 0. It looked like ti was working when testing a time before noon but it broke for any time after noon. I had to try a few things once i figured out that it was always calculating 0 I knew where the problem was.
+
 - Describe the experience of writing tests. Is this your first time writing unit tests?
+It's my second time writing tests. we had one class that covered it. It was a little tough because I didn't have console logs to track what the data was at different stages but worked out a temporary fix for that and got through it and identified some areas i should continue to look into.
