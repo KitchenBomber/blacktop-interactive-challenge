@@ -10,6 +10,7 @@ const moment = require('moment-timezone');
  * @returns {Boolean} whether the timestamp is within 30 seconds of now
  */
 function closeToNow(timestamp) {
+    // YOUR CODE HERE
     let dateToCompare = moment(timestamp);
     let secondsFromNow = moment().diff(dateToCompare, 'seconds')
     if (secondsFromNow < 30 && secondsFromNow > -30){
@@ -17,8 +18,6 @@ function closeToNow(timestamp) {
     } else {
         return false
     }
-    
-    // YOUR CODE HERE
 }
 
 /**
@@ -34,6 +33,14 @@ function closeToNow(timestamp) {
  */
 function closestDate(timestamp) {
     // YOUR CODE HERE
+    let dateToCheck = moment(timestamp);
+    let lastMidnight = moment(timestamp).startOf('day');
+    let hoursSinceMidnight = dateToCheck.diff(lastMidnight, 'hours')
+   if (hoursSinceMidnight < 12){
+       return lastMidnight.subtract({ days: 1 }).format('YYYY-MM-DD')
+   } else {
+       return lastMidnight.format('YYYY-MM-DD')
+   }
 }
 
 /**
