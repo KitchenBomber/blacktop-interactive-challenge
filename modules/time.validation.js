@@ -34,7 +34,7 @@ function closeToNow(timestamp) {
 function closestDate(timestamp) {
     // YOUR CODE HERE
     let dateToCheck = moment(timestamp);
-    let lastMidnight = moment(timestamp).startOf('day');
+    let lastMidnight = dateToCheck.startOf('day');
     let hoursSinceMidnight = dateToCheck.diff(lastMidnight, 'hours')
    if (hoursSinceMidnight < 12){
        return lastMidnight.subtract({ days: 1 }).format('YYYY-MM-DD')
@@ -54,6 +54,8 @@ function closestDate(timestamp) {
  */
 function formatTimestamp(timestamp, timezone) {
     // YOUR CODE HERE
+    return moment(timestamp).tz(timezone).format('MMMM Do, YYYY [at] h:mm a')
+
 }
 
 module.exports = {
