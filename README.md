@@ -14,11 +14,11 @@ npm run test
 ## Objectives
 
 - [x] Complete `closeToNow` function in `modules/time.validation.js`
-- [ ] Write tests in `test/time.validation.tests.js` to validate the `closeToNow` function
+- [x] Write tests in `test/time.validation.tests.js` to validate the `closeToNow` function
 - [x] Complete the `closestDate` function in `modules/time.validation.js`
-- [ ] Write tests in `test/time.validation.tests.js` to validate the `closestDate` function
+- [x] Write tests in `test/time.validation.tests.js` to validate the `closestDate` function
 - [x] Complete the `formatTimestamp` function in `modules/time.validation.js`
-- [ ] Write tests in `test/time.validation.tests.js` to validate the `formatTimestamp` function
+- [x] Write tests in `test/time.validation.tests.js` to validate the `formatTimestamp` function
 
 ## Questions
 

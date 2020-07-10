@@ -13,7 +13,8 @@ describe('time validation', () => {
             expect(closeToNow(timestamp)).toBe(true);
             done();
         });
-        test('it returns true if passed the time 29 seconds ago', (done) =>{
+        // YOUR CODE HERE
+        test('it returns true if passed the time 29 seconds ago', (done) => {
             const date = new moment();
             const timestamp = date.subtract({ seconds: 29 }).toISOString();
             expect(closeToNow(timestamp)).toBe(true);
@@ -37,16 +38,20 @@ describe('time validation', () => {
             expect(closeToNow(timestamp)).toBe(false);
             done();
         });
-        // YOUR CODE HERE
     });
     describe('closest date', () => {
         test('it returns the previous day if before noon CST', (done) => {
-            const inputTime = '2020-07-01T16:03:18.021Z'
+            const inputTime = '2020-07-01T16:03:18.021Z';
             const expectedOutput = '2020-06-30';
             expect(closestDate(inputTime)).toBe(expectedOutput);
             done();
         });
-        
+        test('it returns the current day if after noon CST', (done) => {
+            const inputTime = '2020-07-01T17:03:18.021Z';
+            const expectedOutput = '2020-07-01';
+            expect(closestDate(inputTime)).toBe(expectedOutput);
+            done();
+        });
         // YOUR CODE HERE
     });
     describe('format timestamp', () => {
@@ -57,5 +62,18 @@ describe('time validation', () => {
             done();
         });
         // YOUR CODE HERE
+            test('it returns a formatted timestamp', (done) => {
+                const inputTime = '2020-07-01T16:03:18.021Z'
+                const expectedOutput = 'July 1st, 2020 at 9:03 am';
+                expect(formatTimestamp(inputTime, "America/Los_Angeles")).toBe(expectedOutput);
+                done();
+            });
+        test('it returns a formatted timestamp', (done) => {
+            const inputTime = '2020-07-01T16:03:18.021Z'
+            const expectedOutput = 'July 1st, 2020 at 12:03 pm';
+            expect(formatTimestamp(inputTime, "America/New_York")).toBe(expectedOutput);
+            done();
+        });
+
+        });
     });
-});

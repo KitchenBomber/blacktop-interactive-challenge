@@ -34,12 +34,12 @@ function closeToNow(timestamp) {
 function closestDate(timestamp) {
     // YOUR CODE HERE
     let dateToCheck = moment(timestamp);
-    let lastMidnight = dateToCheck.startOf('day');
-    let hoursSinceMidnight = dateToCheck.diff(lastMidnight, 'hours')
-   if (hoursSinceMidnight < 12){
-       return lastMidnight.subtract({ days: 1 }).format('YYYY-MM-DD')
+    let lastMidnight = moment(timestamp).startOf('day');
+    let hoursSinceMidnight = dateToCheck.diff(lastMidnight, 'hours', true);
+   if (hoursSinceMidnight > 12 ){
+       return dateToCheck.format('YYYY-MM-DD')
    } else {
-       return lastMidnight.format('YYYY-MM-DD')
+      return lastMidnight.subtract({ days: 1 }).format('YYYY-MM-DD')
    }
 }
 
