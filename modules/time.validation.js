@@ -10,6 +10,14 @@ const moment = require('moment-timezone');
  * @returns {Boolean} whether the timestamp is within 30 seconds of now
  */
 function closeToNow(timestamp) {
+    let dateToCompare = moment(timestamp);
+    let secondsFromNow = moment().diff(dateToCompare, 'seconds')
+    if (secondsFromNow < 30 && secondsFromNow > -30){
+        return true
+    } else {
+        return false
+    }
+    
     // YOUR CODE HERE
 }
 
